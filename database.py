@@ -47,8 +47,21 @@ def init_db():
     )
     """)
 
+    # Tabela para notas (grades)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS grades (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        assessment_name TEXT NOT NULL,
+        related_class TEXT NOT NULL,
+        evaluation_date TEXT NOT NULL,
+        score REAL NOT NULL,
+        description TEXT
+    )
+    """)
+
     conn.commit()
     conn.close()
+
 
 def get_classes():
     """Retorna uma lista de matérias cadastradas no sistema."""
